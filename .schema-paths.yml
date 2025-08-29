@@ -1,0 +1,207 @@
+app_group:
+  - read:
+      path: /apps/snmp.eda.nokia.com
+      method: GET
+
+patch:
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: PATCH
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: PATCH
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: PATCH
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: PATCH
+
+resource_history:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}/_revs
+      method: GET
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}/_revs
+      method: GET
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}/_revs
+      method: GET
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}/_revs
+      method: GET
+
+resource_list:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1
+      method: GET
+
+resource_topology:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}/_topology
+      method: GET
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}/_topology
+      method: GET
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}/_topology
+      method: GET
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}/_topology
+      method: GET
+
+status:
+  - delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: DELETE
+  - delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: DELETE
+  - delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: DELETE
+  - delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: DELETE
+
+ui_result:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/_ui/{pathname}
+      method: GET
+
+com.nokia.eda.snmp.v1alpha1.cluster_destination:
+  - create:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations
+      method: POST
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: GET
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: PUT
+
+com.nokia.eda.snmp.v1alpha1.cluster_destination_list:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations
+      method: GET
+  - delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations
+      method: DELETE
+
+com.nokia.eda.snmp.v1alpha1.cluster_destination_deleted_resources:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/_deleted
+      method: GET
+
+com.nokia.eda.snmp.v1alpha1.cluster_trap_group:
+  - create:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups
+      method: POST
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: GET
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: PUT
+
+com.nokia.eda.snmp.v1alpha1.cluster_trap_group_list:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups
+      method: GET
+  - delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups
+      method: DELETE
+
+com.nokia.eda.snmp.v1alpha1.cluster_trap_group_deleted_resources:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/_deleted
+      method: GET
+
+com.nokia.eda.snmp.v1alpha1.destination:
+  - create:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations
+      method: POST
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: GET
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: PUT
+
+com.nokia.eda.snmp.v1alpha1.destination_list:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/destinations
+      method: GET
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations
+      method: GET
+  - delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations
+      method: DELETE
+
+com.nokia.eda.snmp.v1alpha1.destination_deleted_resources:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/_deleted
+      method: GET
+
+com.nokia.eda.snmp.v1alpha1.trap_group:
+  - create:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups
+      method: POST
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: GET
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: PUT
+
+com.nokia.eda.snmp.v1alpha1.trap_group_list:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups
+      method: GET
+  - delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups
+      method: DELETE
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/trapgroups
+      method: GET
+
+com.nokia.eda.snmp.v1alpha1.trap_group_deleted_resources:
+  - read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/_deleted
+      method: GET
+
+totalPaths: 25
+totalSchemas: 48
+usedSchemas: 19
+unusedSchemas: 29
+unusedSchemaList:
+  - AppGroupVersion
+  - ErrorIndex
+  - ErrorItem
+  - ErrorResponse
+  - K8SPatchOp
+  - OverlayState
+  - Resource
+  - ResourceHistoryEntry
+  - StatusDetails
+  - TopoAttrMetadata
+  - TopoElemMetadata
+  - TopoLinkEndpoint
+  - TopoNodeGrouping
+  - TopoOverlayEndpoint
+  - TopoOverlayEndpointState
+  - TopoOverlayLink
+  - TopoOverlayLinkState
+  - TopoOverlayNode
+  - TopoOverlayNodeState
+  - TopoSchema
+  - Topology
+  - com.nokia.eda.snmp.v1alpha1.ClusterDestination_DeletedResourceEntry
+  - com.nokia.eda.snmp.v1alpha1.ClusterDestination_metadata
+  - com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup_DeletedResourceEntry
+  - com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup_metadata
+  - com.nokia.eda.snmp.v1alpha1.Destination_DeletedResourceEntry
+  - com.nokia.eda.snmp.v1alpha1.Destination_metadata
+  - com.nokia.eda.snmp.v1alpha1.TrapGroup_DeletedResourceEntry
+  - com.nokia.eda.snmp.v1alpha1.TrapGroup_metadata

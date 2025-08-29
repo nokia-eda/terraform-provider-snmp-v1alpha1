@@ -1,0 +1,2364 @@
+{
+    "datasources": [
+        {
+            "name": "app_group",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "preferred_version",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "group_version",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "versions",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "group_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "cluster_destination",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "name of the ClusterDestination"
+                        }
+                    },
+                    {
+                        "name": "hash",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "resource content will be returned as it was at the time of this git hash"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "optional",
+                            "attributes": [
+                                {
+                                    "name": "address",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Address is the IP address and port of the SNMP trap receiver.\nFormat: \"\u003chost\u003e:\u003cport\u003e\" (e.g., \"192.0.2.1:162\")."
+                                    }
+                                },
+                                {
+                                    "name": "authentication",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "password",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Password is the authentication password for SNMPv3."
+                                                }
+                                            },
+                                            {
+                                                "name": "protocol",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Protocol specifies the authentication protocol."
+                                                }
+                                            }
+                                        ],
+                                        "description": "Authentication contains the protocol and password used to authenticate SNMPv3 messages.\nRequired if SecurityLevel is \"auth-no-priv\" or \"auth-priv\"."
+                                    }
+                                },
+                                {
+                                    "name": "community",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Community is the SNMP community string for SNMPv2c.\nIgnored for SNMPv3. Acts as a simple shared password in SNMPv2c."
+                                    }
+                                },
+                                {
+                                    "name": "engine_id",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "EngineID is the unique identifier of the remote SNMP engine.\nUsed in SNMPv3 for secure communication and context identification."
+                                    }
+                                },
+                                {
+                                    "name": "privacy",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "password",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Password is the encryption password for SNMPv3."
+                                                }
+                                            },
+                                            {
+                                                "name": "protocol",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Protocol specifies the privacy (encryption) protocol."
+                                                }
+                                            }
+                                        ],
+                                        "description": "Privacy contains the encryption protocol and password for securing SNMPv3 messages.\nRequired if SecurityLevel is \"auth-priv\"."
+                                    }
+                                },
+                                {
+                                    "name": "security_level",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "SecurityLevel defines the security level for SNMPv3 communication.\nRequired for SNMPv3 only.\nSupported values:\n- \"no-auth-no-priv\": no authentication, no privacy\n- \"auth-no-priv\": authentication only\n- \"auth-priv\": authentication and privacy (encryption)"
+                                    }
+                                },
+                                {
+                                    "name": "support_inform_pdu",
+                                    "bool": {
+                                        "computed_optional_required": "optional",
+                                        "description": "If true the destination supports Inform PDUs."
+                                    }
+                                },
+                                {
+                                    "name": "user",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "User is the SNMPv3 username used for authentication and privacy.\nRequired for SNMPv3 when using \"auth-no-priv\" or \"auth-priv\" levels."
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Version specifies the SNMP protocol version to use for trap messages.\nSupported values: \"v1\", \"v2c\", \"v3\"."
+                                    }
+                                }
+                            ],
+                            "description": "ClusterDestinationSpec defines the desired state of ClusterDestination"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "description": "ClusterDestinationStatus defines the observed state of ClusterDestination"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "cluster_destination_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "fields",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched."
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "an EQL \"where\" expression that will be used to filter the set of resources returned."
+                        }
+                    },
+                    {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "items",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "api_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "metadata",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "annotations",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "labels",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spec",
+                                        "single_nested": {
+                                            "computed_optional_required": "optional",
+                                            "attributes": [
+                                                {
+                                                    "name": "address",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Address is the IP address and port of the SNMP trap receiver.\nFormat: \"\u003chost\u003e:\u003cport\u003e\" (e.g., \"192.0.2.1:162\")."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "authentication",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "password",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Password is the authentication password for SNMPv3."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "protocol",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Protocol specifies the authentication protocol."
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Authentication contains the protocol and password used to authenticate SNMPv3 messages.\nRequired if SecurityLevel is \"auth-no-priv\" or \"auth-priv\"."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "community",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Community is the SNMP community string for SNMPv2c.\nIgnored for SNMPv3. Acts as a simple shared password in SNMPv2c."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "engine_id",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "EngineID is the unique identifier of the remote SNMP engine.\nUsed in SNMPv3 for secure communication and context identification."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "privacy",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "password",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Password is the encryption password for SNMPv3."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "protocol",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Protocol specifies the privacy (encryption) protocol."
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Privacy contains the encryption protocol and password for securing SNMPv3 messages.\nRequired if SecurityLevel is \"auth-priv\"."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "security_level",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "SecurityLevel defines the security level for SNMPv3 communication.\nRequired for SNMPv3 only.\nSupported values:\n- \"no-auth-no-priv\": no authentication, no privacy\n- \"auth-no-priv\": authentication only\n- \"auth-priv\": authentication and privacy (encryption)"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "support_inform_pdu",
+                                                    "bool": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "If true the destination supports Inform PDUs."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "user",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "User is the SNMPv3 username used for authentication and privacy.\nRequired for SNMPv3 when using \"auth-no-priv\" or \"auth-priv\" levels."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "version",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Version specifies the SNMP protocol version to use for trap messages.\nSupported values: \"v1\", \"v2c\", \"v3\"."
+                                                    }
+                                                }
+                                            ],
+                                            "description": "ClusterDestinationSpec defines the desired state of ClusterDestination"
+                                        }
+                                    },
+                                    {
+                                        "name": "status",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "description": "ClusterDestinationStatus defines the observed state of ClusterDestination"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "cluster_trap_group",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "name of the ClusterTrapGroup"
+                        }
+                    },
+                    {
+                        "name": "hash",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "resource content will be returned as it was at the time of this git hash"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "optional",
+                            "attributes": [
+                                {
+                                    "name": "destinations",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of SNMP Destinations"
+                                    }
+                                },
+                                {
+                                    "name": "names",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of SNMP trap names to be sent out."
+                                    }
+                                }
+                            ],
+                            "description": "ClusterTrapGroupSpec defines the desired state of ClusterTrapGroup"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "description": "ClusterTrapGroupStatus defines the observed state of ClusterTrapGroup"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "cluster_trap_group_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "fields",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched."
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "an EQL \"where\" expression that will be used to filter the set of resources returned."
+                        }
+                    },
+                    {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "items",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "api_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "metadata",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "annotations",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "labels",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spec",
+                                        "single_nested": {
+                                            "computed_optional_required": "optional",
+                                            "attributes": [
+                                                {
+                                                    "name": "destinations",
+                                                    "list": {
+                                                        "computed_optional_required": "optional",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "List of SNMP Destinations"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "names",
+                                                    "list": {
+                                                        "computed_optional_required": "optional",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "List of SNMP trap names to be sent out."
+                                                    }
+                                                }
+                                            ],
+                                            "description": "ClusterTrapGroupSpec defines the desired state of ClusterTrapGroup"
+                                        }
+                                    },
+                                    {
+                                        "name": "status",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "description": "ClusterTrapGroupStatus defines the observed state of ClusterTrapGroup"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "destination",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "name of the Destination"
+                        }
+                    },
+                    {
+                        "name": "hash",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "resource content will be returned as it was at the time of this git hash"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "optional",
+                            "attributes": [
+                                {
+                                    "name": "address",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Address is the IP address and port of the SNMP trap receiver.\nFormat: \"\u003chost\u003e:\u003cport\u003e\" (e.g., \"192.0.2.1:162\")."
+                                    }
+                                },
+                                {
+                                    "name": "authentication",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "password",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Password is the authentication password for SNMPv3."
+                                                }
+                                            },
+                                            {
+                                                "name": "protocol",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Protocol specifies the authentication protocol."
+                                                }
+                                            }
+                                        ],
+                                        "description": "Authentication contains the protocol and password used to authenticate SNMPv3 messages.\nRequired if SecurityLevel is \"auth-no-priv\" or \"auth-priv\"."
+                                    }
+                                },
+                                {
+                                    "name": "community",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Community is the SNMP community string for SNMPv2c.\nIgnored for SNMPv3. Acts as a simple shared password in SNMPv2c."
+                                    }
+                                },
+                                {
+                                    "name": "engine_id",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "EngineID is the unique identifier of the remote SNMP engine.\nUsed in SNMPv3 for secure communication and context identification."
+                                    }
+                                },
+                                {
+                                    "name": "privacy",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "password",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Password is the encryption password for SNMPv3."
+                                                }
+                                            },
+                                            {
+                                                "name": "protocol",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Protocol specifies the privacy (encryption) protocol."
+                                                }
+                                            }
+                                        ],
+                                        "description": "Privacy contains the encryption protocol and password for securing SNMPv3 messages.\nRequired if SecurityLevel is \"auth-priv\"."
+                                    }
+                                },
+                                {
+                                    "name": "security_level",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "SecurityLevel defines the security level for SNMPv3 communication.\nRequired for SNMPv3 only.\nSupported values:\n- \"no-auth-no-priv\": no authentication, no privacy\n- \"auth-no-priv\": authentication only\n- \"auth-priv\": authentication and privacy (encryption)"
+                                    }
+                                },
+                                {
+                                    "name": "support_inform_pdu",
+                                    "bool": {
+                                        "computed_optional_required": "optional",
+                                        "description": "If true the destination supports Inform PDUs."
+                                    }
+                                },
+                                {
+                                    "name": "user",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "User is the SNMPv3 username used for authentication and privacy.\nRequired for SNMPv3 when using \"auth-no-priv\" or \"auth-priv\" levels."
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Version specifies the SNMP protocol version to use for trap messages.\nSupported values: \"v1\", \"v2c\", \"v3\"."
+                                    }
+                                }
+                            ],
+                            "description": "DestinationSpec defines the desired state of Destination"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "description": "DestinationStatus defines the observed state of Destination"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "destination_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "fields",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched."
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "an EQL \"where\" expression that will be used to filter the set of resources returned."
+                        }
+                    },
+                    {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "items",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "api_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "metadata",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "annotations",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "labels",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "namespace",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spec",
+                                        "single_nested": {
+                                            "computed_optional_required": "optional",
+                                            "attributes": [
+                                                {
+                                                    "name": "address",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Address is the IP address and port of the SNMP trap receiver.\nFormat: \"\u003chost\u003e:\u003cport\u003e\" (e.g., \"192.0.2.1:162\")."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "authentication",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "password",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Password is the authentication password for SNMPv3."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "protocol",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Protocol specifies the authentication protocol."
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Authentication contains the protocol and password used to authenticate SNMPv3 messages.\nRequired if SecurityLevel is \"auth-no-priv\" or \"auth-priv\"."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "community",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Community is the SNMP community string for SNMPv2c.\nIgnored for SNMPv3. Acts as a simple shared password in SNMPv2c."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "engine_id",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "EngineID is the unique identifier of the remote SNMP engine.\nUsed in SNMPv3 for secure communication and context identification."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "privacy",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "password",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Password is the encryption password for SNMPv3."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "protocol",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Protocol specifies the privacy (encryption) protocol."
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Privacy contains the encryption protocol and password for securing SNMPv3 messages.\nRequired if SecurityLevel is \"auth-priv\"."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "security_level",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "SecurityLevel defines the security level for SNMPv3 communication.\nRequired for SNMPv3 only.\nSupported values:\n- \"no-auth-no-priv\": no authentication, no privacy\n- \"auth-no-priv\": authentication only\n- \"auth-priv\": authentication and privacy (encryption)"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "support_inform_pdu",
+                                                    "bool": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "If true the destination supports Inform PDUs."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "user",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "User is the SNMPv3 username used for authentication and privacy.\nRequired for SNMPv3 when using \"auth-no-priv\" or \"auth-priv\" levels."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "version",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Version specifies the SNMP protocol version to use for trap messages.\nSupported values: \"v1\", \"v2c\", \"v3\"."
+                                                    }
+                                                }
+                                            ],
+                                            "description": "DestinationSpec defines the desired state of Destination"
+                                        }
+                                    },
+                                    {
+                                        "name": "status",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "description": "DestinationStatus defines the observed state of Destination"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "resource_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "group_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "resources",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "name",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "namespaced",
+                                        "bool": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "read_only",
+                                        "bool": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "singular_name",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "ui_category",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "trap_group",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "name of the TrapGroup"
+                        }
+                    },
+                    {
+                        "name": "hash",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "resource content will be returned as it was at the time of this git hash"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "optional",
+                            "attributes": [
+                                {
+                                    "name": "destinations",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of SNMP Destinations"
+                                    }
+                                },
+                                {
+                                    "name": "names",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of SNMP trap names to be sent out."
+                                    }
+                                }
+                            ],
+                            "description": "TrapGroupSpec defines the desired state of TrapGroup"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "description": "TrapGroupStatus defines the observed state of TrapGroup"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "trap_group_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "fields",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched."
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "an EQL \"where\" expression that will be used to filter the set of resources returned."
+                        }
+                    },
+                    {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "items",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "api_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "metadata",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "annotations",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "labels",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "namespace",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spec",
+                                        "single_nested": {
+                                            "computed_optional_required": "optional",
+                                            "attributes": [
+                                                {
+                                                    "name": "destinations",
+                                                    "list": {
+                                                        "computed_optional_required": "optional",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "List of SNMP Destinations"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "names",
+                                                    "list": {
+                                                        "computed_optional_required": "optional",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "List of SNMP trap names to be sent out."
+                                                    }
+                                                }
+                                            ],
+                                            "description": "TrapGroupSpec defines the desired state of TrapGroup"
+                                        }
+                                    },
+                                    {
+                                        "name": "status",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "description": "TrapGroupStatus defines the observed state of TrapGroup"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "provider": {
+        "name": "snmp"
+    },
+    "resources": [
+        {
+            "name": "cluster_destination",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "snmp.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^snmp\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "ClusterDestination"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^ClusterDestination$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "address",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Address is the IP address and port of the SNMP trap receiver.\nFormat: \"\u003chost\u003e:\u003cport\u003e\" (e.g., \"192.0.2.1:162\")."
+                                    }
+                                },
+                                {
+                                    "name": "authentication",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "password",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Password is the authentication password for SNMPv3.",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.LengthAtLeast(1)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "protocol",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Protocol specifies the authentication protocol.",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.OneOf(\n\"hmac-md5-96\",\n\"hmac-sha1-96\",\n\"hmac-sha2-224\",\n\"hmac-sha2-256\",\n\"hmac-sha2-384\",\n\"hmac-sha2-512\",\n)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "description": "Authentication contains the protocol and password used to authenticate SNMPv3 messages.\nRequired if SecurityLevel is \"auth-no-priv\" or \"auth-priv\"."
+                                    }
+                                },
+                                {
+                                    "name": "community",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Community is the SNMP community string for SNMPv2c.\nIgnored for SNMPv3. Acts as a simple shared password in SNMPv2c."
+                                    }
+                                },
+                                {
+                                    "name": "engine_id",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "EngineID is the unique identifier of the remote SNMP engine.\nUsed in SNMPv3 for secure communication and context identification."
+                                    }
+                                },
+                                {
+                                    "name": "privacy",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "password",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Password is the encryption password for SNMPv3.",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.LengthAtLeast(1)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "protocol",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Protocol specifies the privacy (encryption) protocol.",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.OneOf(\n\"cbc-des\",\n\"cfb128-aes-128\",\n\"cfb128-aes-192\",\n\"cfb128-aes-256\",\n)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "description": "Privacy contains the encryption protocol and password for securing SNMPv3 messages.\nRequired if SecurityLevel is \"auth-priv\"."
+                                    }
+                                },
+                                {
+                                    "name": "security_level",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "SecurityLevel defines the security level for SNMPv3 communication.\nRequired for SNMPv3 only.\nSupported values:\n- \"no-auth-no-priv\": no authentication, no privacy\n- \"auth-no-priv\": authentication only\n- \"auth-priv\": authentication and privacy (encryption)",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"no-auth-no-priv\",\n\"auth-no-priv\",\n\"auth-priv\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "support_inform_pdu",
+                                    "bool": {
+                                        "computed_optional_required": "optional",
+                                        "description": "If true the destination supports Inform PDUs."
+                                    }
+                                },
+                                {
+                                    "name": "user",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "User is the SNMPv3 username used for authentication and privacy.\nRequired for SNMPv3 when using \"auth-no-priv\" or \"auth-priv\" levels."
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Version specifies the SNMP protocol version to use for trap messages.\nSupported values: \"v1\", \"v2c\", \"v3\".",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"v1\",\n\"v2c\",\n\"v3\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "description": "ClusterDestinationSpec defines the desired state of ClusterDestination"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "ClusterDestinationStatus defines the observed state of ClusterDestination"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the ClusterDestination"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "cluster_trap_group",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "snmp.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^snmp\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "ClusterTrapGroup"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^ClusterTrapGroup$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "destinations",
+                                    "list": {
+                                        "computed_optional_required": "required",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of SNMP Destinations"
+                                    }
+                                },
+                                {
+                                    "name": "names",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of SNMP trap names to be sent out."
+                                    }
+                                }
+                            ],
+                            "description": "ClusterTrapGroupSpec defines the desired state of ClusterTrapGroup"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "ClusterTrapGroupStatus defines the observed state of ClusterTrapGroup"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the ClusterTrapGroup"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "destination",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "snmp.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^snmp\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "Destination"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^Destination$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "required"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "address",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Address is the IP address and port of the SNMP trap receiver.\nFormat: \"\u003chost\u003e:\u003cport\u003e\" (e.g., \"192.0.2.1:162\")."
+                                    }
+                                },
+                                {
+                                    "name": "authentication",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "password",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Password is the authentication password for SNMPv3.",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.LengthAtLeast(1)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "protocol",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Protocol specifies the authentication protocol.",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.OneOf(\n\"hmac-md5-96\",\n\"hmac-sha1-96\",\n\"hmac-sha2-224\",\n\"hmac-sha2-256\",\n\"hmac-sha2-384\",\n\"hmac-sha2-512\",\n)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "description": "Authentication contains the protocol and password used to authenticate SNMPv3 messages.\nRequired if SecurityLevel is \"auth-no-priv\" or \"auth-priv\"."
+                                    }
+                                },
+                                {
+                                    "name": "community",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Community is the SNMP community string for SNMPv2c.\nIgnored for SNMPv3. Acts as a simple shared password in SNMPv2c."
+                                    }
+                                },
+                                {
+                                    "name": "engine_id",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "EngineID is the unique identifier of the remote SNMP engine.\nUsed in SNMPv3 for secure communication and context identification."
+                                    }
+                                },
+                                {
+                                    "name": "privacy",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "password",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Password is the encryption password for SNMPv3.",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.LengthAtLeast(1)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "protocol",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Protocol specifies the privacy (encryption) protocol.",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.OneOf(\n\"cbc-des\",\n\"cfb128-aes-128\",\n\"cfb128-aes-192\",\n\"cfb128-aes-256\",\n)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "description": "Privacy contains the encryption protocol and password for securing SNMPv3 messages.\nRequired if SecurityLevel is \"auth-priv\"."
+                                    }
+                                },
+                                {
+                                    "name": "security_level",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "SecurityLevel defines the security level for SNMPv3 communication.\nRequired for SNMPv3 only.\nSupported values:\n- \"no-auth-no-priv\": no authentication, no privacy\n- \"auth-no-priv\": authentication only\n- \"auth-priv\": authentication and privacy (encryption)",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"no-auth-no-priv\",\n\"auth-no-priv\",\n\"auth-priv\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "support_inform_pdu",
+                                    "bool": {
+                                        "computed_optional_required": "optional",
+                                        "description": "If true the destination supports Inform PDUs."
+                                    }
+                                },
+                                {
+                                    "name": "user",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "User is the SNMPv3 username used for authentication and privacy.\nRequired for SNMPv3 when using \"auth-no-priv\" or \"auth-priv\" levels."
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Version specifies the SNMP protocol version to use for trap messages.\nSupported values: \"v1\", \"v2c\", \"v3\".",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"v1\",\n\"v2c\",\n\"v3\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "description": "DestinationSpec defines the desired state of Destination"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "DestinationStatus defines the observed state of Destination"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the Destination"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "trap_group",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "snmp.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^snmp\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "TrapGroup"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^TrapGroup$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "required"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "destinations",
+                                    "list": {
+                                        "computed_optional_required": "required",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of SNMP Destinations"
+                                    }
+                                },
+                                {
+                                    "name": "names",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of SNMP trap names to be sent out."
+                                    }
+                                }
+                            ],
+                            "description": "TrapGroupSpec defines the desired state of TrapGroup"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "TrapGroupStatus defines the observed state of TrapGroup"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the TrapGroup"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "version": "0.1"
+}

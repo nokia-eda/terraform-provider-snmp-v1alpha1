@@ -1,0 +1,110 @@
+provider:
+  name: snmp
+
+data_sources:
+  app_group:
+    read:
+      path: /apps/snmp.eda.nokia.com
+      method: GET
+
+  cluster_destination:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: GET
+
+  cluster_destination_list:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations
+      method: GET
+
+  cluster_trap_group:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: GET
+
+  cluster_trap_group_list:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups
+      method: GET
+
+  destination:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: GET
+
+  destination_list:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations
+      method: GET
+
+  resource_list:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1
+      method: GET
+
+  trap_group:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: GET
+
+  trap_group_list:
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups
+      method: GET
+
+resources:
+  cluster_destination:
+    create:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations
+      method: POST
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: GET
+    update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: PUT
+    delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: DELETE
+
+  cluster_trap_group:
+    create:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups
+      method: POST
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: GET
+    update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: PUT
+    delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: DELETE
+
+  destination:
+    create:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations
+      method: POST
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: GET
+    update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: PUT
+    delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: DELETE
+
+  trap_group:
+    create:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups
+      method: POST
+    read:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: GET
+    update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: PUT
+    delete:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: DELETE
