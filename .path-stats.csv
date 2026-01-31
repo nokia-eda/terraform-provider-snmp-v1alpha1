@@ -8,7 +8,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/_deleted,GET,com.nokia.eda.snmp.v1alpha1.ClusterDestination_DeletedResources,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name},DELETE,Status,cluster_destination,true,false,true
 /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name},GET,com.nokia.eda.snmp.v1alpha1.ClusterDestination,cluster_destination,true,true,true
-/apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name},PATCH,Patch,,false,false,false
+/apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name},PATCH,com.nokia.eda.snmp.v1alpha1.ClusterDestination,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name},PUT,com.nokia.eda.snmp.v1alpha1.ClusterDestination,cluster_destination,true,false,true
 /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}/_targets,GET,IntentTargets,,false,false,false
@@ -20,7 +20,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/_deleted,GET,com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup_DeletedResources,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name},DELETE,Status,cluster_trap_group,true,false,true
 /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name},GET,com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup,cluster_trap_group,true,true,true
-/apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name},PATCH,Patch,,false,false,false
+/apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name},PATCH,com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name},PUT,com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup,cluster_trap_group,true,false,true
 /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}/_targets,GET,IntentTargets,,false,false,false
@@ -33,7 +33,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/_deleted,GET,com.nokia.eda.snmp.v1alpha1.Destination_DeletedResources,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name},DELETE,Status,destination,true,false,true
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name},GET,com.nokia.eda.snmp.v1alpha1.Destination,destination,true,true,true
-/apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name},PATCH,Patch,,false,false,false
+/apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name},PATCH,com.nokia.eda.snmp.v1alpha1.Destination,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name},PUT,com.nokia.eda.snmp.v1alpha1.Destination,destination,true,false,true
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}/_targets,GET,IntentTargets,,false,false,false
@@ -45,7 +45,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/_deleted,GET,com.nokia.eda.snmp.v1alpha1.TrapGroup_DeletedResources,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name},DELETE,Status,trap_group,true,false,true
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name},GET,com.nokia.eda.snmp.v1alpha1.TrapGroup,trap_group,true,true,true
-/apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name},PATCH,Patch,,false,false,false
+/apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name},PATCH,com.nokia.eda.snmp.v1alpha1.TrapGroup,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name},PUT,com.nokia.eda.snmp.v1alpha1.TrapGroup,trap_group,true,false,true
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}/_targets,GET,IntentTargets,,false,false,false

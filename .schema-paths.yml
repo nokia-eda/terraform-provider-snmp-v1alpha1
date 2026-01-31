@@ -31,20 +31,6 @@ k8_s_topology_request:
       path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}/_topology
       method: POST
 
-patch:
-  - update:
-      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
-      method: PATCH
-  - update:
-      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
-      method: PATCH
-  - update:
-      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
-      method: PATCH
-  - update:
-      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
-      method: PATCH
-
 resource_history:
   - read:
       path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}/_revs
@@ -107,6 +93,9 @@ com.nokia.eda.snmp.v1alpha1.cluster_destination:
   - update:
       path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
       method: PUT
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+      method: PATCH
 
 com.nokia.eda.snmp.v1alpha1.cluster_destination_list:
   - read:
@@ -131,6 +120,9 @@ com.nokia.eda.snmp.v1alpha1.cluster_trap_group:
   - update:
       path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
       method: PUT
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+      method: PATCH
 
 com.nokia.eda.snmp.v1alpha1.cluster_trap_group_list:
   - read:
@@ -155,6 +147,9 @@ com.nokia.eda.snmp.v1alpha1.destination:
   - update:
       path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
       method: PUT
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+      method: PATCH
 
 com.nokia.eda.snmp.v1alpha1.destination_list:
   - read:
@@ -182,6 +177,9 @@ com.nokia.eda.snmp.v1alpha1.trap_group:
   - update:
       path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
       method: PUT
+  - update:
+      path: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+      method: PATCH
 
 com.nokia.eda.snmp.v1alpha1.trap_group_list:
   - read:
@@ -201,8 +199,8 @@ com.nokia.eda.snmp.v1alpha1.trap_group_deleted_resources:
 
 totalPaths: 29
 totalSchemas: 75
-usedSchemas: 21
-unusedSchemas: 54
+usedSchemas: 20
+unusedSchemas: 55
 unusedSchemaList:
   - AppGroupVersion
   - ErrorIndex
@@ -211,6 +209,7 @@ unusedSchemaList:
   - IntentTarget
   - K8SPatchOp
   - OverlayState
+  - Patch
   - Resource
   - ResourceHistoryEntry
   - StatusDetails
