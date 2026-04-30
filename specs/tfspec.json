@@ -317,7 +317,7 @@
                         "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
-                            "description": "A label selector string to filter the results based on resource labels. If specified multiple times, the union of resources which satisfy a label-selector will be returned."
+                            "description": "a label selector string to filter the results based on CR labels"
                         }
                     },
                     {
@@ -734,7 +734,7 @@
                         "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
-                            "description": "A label selector string to filter the results based on resource labels. If specified multiple times, the union of resources which satisfy a label-selector will be returned."
+                            "description": "a label selector string to filter the results based on CR labels"
                         }
                     },
                     {
@@ -1158,7 +1158,7 @@
                         "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
-                            "description": "A label selector string to filter the results based on resource labels. If specified multiple times, the union of resources which satisfy a label-selector will be returned."
+                            "description": "a label selector string to filter the results based on CR labels"
                         }
                     },
                     {
@@ -1660,7 +1660,7 @@
                         "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
-                            "description": "A label selector string to filter the results based on resource labels. If specified multiple times, the union of resources which satisfy a label-selector will be returned."
+                            "description": "a label selector string to filter the results based on CR labels"
                         }
                     },
                     {
