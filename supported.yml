@@ -1,0 +1,63 @@
+datasources:
+  - model_name: app_group
+    oas_endpoint: /apps/snmp.eda.nokia.com
+    oas_schema: AppGroup
+  - model_name: resource_list
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1
+    oas_schema: ResourceList
+  - model_name: cluster_destination_list
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations
+    oas_schema: com.nokia.eda.snmp.v1alpha1.ClusterDestinationList
+  - model_name: cluster_destination
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}
+    oas_schema: com.nokia.eda.snmp.v1alpha1.ClusterDestination
+  - model_name: cluster_trap_group_list
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups
+    oas_schema: com.nokia.eda.snmp.v1alpha1.ClusterTrapGroupList
+  - model_name: cluster_trap_group
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/{name}
+    oas_schema: com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup
+  - model_name: destination_list
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations
+    oas_schema: com.nokia.eda.snmp.v1alpha1.DestinationList
+  - model_name: destination
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/{name}
+    oas_schema: com.nokia.eda.snmp.v1alpha1.Destination
+  - model_name: trap_group_list
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups
+    oas_schema: com.nokia.eda.snmp.v1alpha1.TrapGroupList
+  - model_name: trap_group
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/{name}
+    oas_schema: com.nokia.eda.snmp.v1alpha1.TrapGroup
+
+resources:
+  - model_name: cluster_destination
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations
+    oas_schema: com.nokia.eda.snmp.v1alpha1.ClusterDestination
+  - model_name: cluster_trap_group
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups
+    oas_schema: com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup
+  - model_name: destination
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations
+    oas_schema: com.nokia.eda.snmp.v1alpha1.Destination
+  - model_name: trap_group
+    oas_endpoint: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups
+    oas_schema: com.nokia.eda.snmp.v1alpha1.TrapGroup
+
+qualified:
+  datasources:
+    - oas_schema: IntentTargets
+      get: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}/_targets
+    - oas_schema: ResourceHistory
+      get: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/{name}/_revs
+    - oas_schema: UIResult
+      get: /apps/snmp.eda.nokia.com/v1alpha1/_ui/{pathname}
+    - oas_schema: com.nokia.eda.snmp.v1alpha1.ClusterDestination_DeletedResources
+      get: /apps/snmp.eda.nokia.com/v1alpha1/clusterdestinations/_deleted
+    - oas_schema: com.nokia.eda.snmp.v1alpha1.ClusterTrapGroup_DeletedResources
+      get: /apps/snmp.eda.nokia.com/v1alpha1/clustertrapgroups/_deleted
+    - oas_schema: com.nokia.eda.snmp.v1alpha1.Destination_DeletedResources
+      get: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/destinations/_deleted
+    - oas_schema: com.nokia.eda.snmp.v1alpha1.TrapGroup_DeletedResources
+      get: /apps/snmp.eda.nokia.com/v1alpha1/namespaces/{namespace}/trapgroups/_deleted
+  resources:
